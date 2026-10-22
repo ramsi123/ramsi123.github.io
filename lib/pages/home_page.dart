@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                   _section(
                     AppRoutes.homeAnchor,
                     HeroSection(onNavigate: _scrollTo),
-                    padding: const EdgeInsets.only(top: 72, bottom: 96),
+                    padding: const EdgeInsets.only(top: 112, bottom: 48),
                   ),
                   _section(
                     AppRoutes.publishedAppsAnchor,

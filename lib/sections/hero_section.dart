@@ -39,7 +39,7 @@ class HeroSection extends StatelessWidget {
             constraints: const BoxConstraints(maxWidth: 720),
             child: Text(profile.intro, style: textTheme.bodyLarge),
           ),
-          const SizedBox(height: 36),
+          const SizedBox(height: 48),
           Wrap(
             spacing: 12,
             runSpacing: 12,

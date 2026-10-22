@@ -23,7 +23,7 @@ class ContentWidth extends StatelessWidget {
         constraints: const BoxConstraints(maxWidth: kContentMaxWidth),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: horizontal),
-          child: child,
+          child: SizedBox(width: double.infinity, child: child),
         ),
       ),
     );
