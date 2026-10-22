@@ -17,7 +17,8 @@ const PublishedApp _fixture = PublishedApp(
   summary: 'An inventory management application.',
   tags: <String>['Flutter', 'Firebase'],
   iconPath: 'assets/icons/cma-stock.png',
-  playStoreUrl: 'https://bit.ly/CMAStockApp',
+  playStoreUrl:
+      'https://play.google.com/store/apps/details?id=com.ahmadramsi.cahaya_mulya_abadi',
 );
 
 Future<void> _pumpCard(WidgetTester tester, {required Size size}) async {
@@ -79,7 +80,10 @@ void main() {
     final semantics = tester.widget<Semantics>(
       find.descendant(of: tile, matching: find.byType(Semantics)),
     );
-    expect(semantics.properties.label, 'Scan to open CMA Stock on Google Play');
+    expect(
+      semantics.properties.label,
+      'Scan with your phone to open CMA Stock on Google Play',
+    );
   });
 
   testWidgets('omits tags and features when none are confirmed', (

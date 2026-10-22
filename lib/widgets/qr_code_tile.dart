@@ -22,7 +22,7 @@ class QrCodeTile extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return Semantics(
       image: true,
-      label: 'Scan to open $appName on Google Play',
+      label: 'Scan with your phone to open $appName on Google Play',
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -47,7 +47,8 @@ class QrCodeTile extends StatelessWidget {
           const SizedBox(height: 6),
           ExcludeSemantics(
             child: Text(
-              'Scan with your phone',
+              'Scan with your phone to open $appName on Google Play',
+              textAlign: TextAlign.center,
               style: textTheme.bodySmall?.copyWith(fontSize: 12),
             ),
           ),

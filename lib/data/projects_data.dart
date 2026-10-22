@@ -28,7 +28,8 @@ const List<PublishedApp> publishedApps = <PublishedApp>[
       'assets/screenshots/cma-stock/3_requeststock.jpg',
     ],
     iconPath: 'assets/icons/cma-stock.png',
-    playStoreUrl: 'https://bit.ly/CMAStockApp',
+    playStoreUrl:
+        'https://play.google.com/store/apps/details?id=com.ahmadramsi.cahaya_mulya_abadi',
   ),
   PublishedApp(
     name: 'FocusTime',

@@ -38,7 +38,10 @@ void main() {
       final urls = {
         for (final app in publishedApps) app.slug: app.playStoreUrl,
       };
-      expect(urls['cma-stock'], 'https://bit.ly/CMAStockApp');
+      expect(
+        urls['cma-stock'],
+        'https://play.google.com/store/apps/details?id=com.ahmadramsi.cahaya_mulya_abadi',
+      );
       expect(
         urls['focustime'],
         'https://play.google.com/store/apps/details?id=com.ahmadramsi.focustime',

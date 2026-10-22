@@ -17,7 +17,8 @@ const PublishedApp _minimalApp = PublishedApp(
   slug: 'cma-stock',
   tagline: 'Inventory management',
   summary: 'An inventory management application.',
-  playStoreUrl: 'https://bit.ly/CMAStockApp',
+  playStoreUrl:
+      'https://play.google.com/store/apps/details?id=com.ahmadramsi.cahaya_mulya_abadi',
 );
 
 const PublishedApp _detailedApp = PublishedApp(

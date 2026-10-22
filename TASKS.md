@@ -66,7 +66,7 @@ Use this checklist alongside `PORTFOLIO_PRD.md`. Follow the order below, inspect
 - [x] Provide a final summary of files changed, tests run/results, missing owner inputs, and deployment notes.
 
 ## Known values
-- CMA Stock Play Store URL: `https://bit.ly/CMAStockApp`
+- CMA Stock Play Store URL: `https://play.google.com/store/apps/details?id=com.ahmadramsi.cahaya_mulya_abadi`
 - FocusTime Play Store URL: `https://play.google.com/store/apps/details?id=com.ahmadramsi.focustime`
 - GitHub: `https://github.com/ramsi123`
 - LinkedIn: `https://www.linkedin.com/in/dhiya-ulhaq-ahmad-ramsi-884641222`

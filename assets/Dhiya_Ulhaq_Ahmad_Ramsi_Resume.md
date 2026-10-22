@@ -55,7 +55,7 @@ Mobile stock inventory application for CV. Cahaya Mulya Abadi, handling stock ma
 
 **Tech stack:** Flutter, Firebase, Supabase, Lottie, Local Notifications, Flutter Background Service
 
-**Play Store link:** https://bit.ly/CMAStockApp
+**Play Store link:** https://play.google.com/store/apps/details?id=com.ahmadramsi.cahaya_mulya_abadi
 
 ### Agrisight
 **Android Developer**

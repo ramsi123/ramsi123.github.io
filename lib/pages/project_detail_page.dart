@@ -27,7 +27,7 @@ class ProjectDetailPage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          _DetailTopBar(appName: app.name),
+          _DetailTopBar(),
           Expanded(
             child: SingleChildScrollView(
               child: ContentWidth(
@@ -85,13 +85,10 @@ class ProjectDetailPage extends StatelessWidget {
 }
 
 class _DetailTopBar extends StatelessWidget {
-  const _DetailTopBar({required this.appName});
-
-  final String appName;
+  const _DetailTopBar();
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return Container(
       decoration: const BoxDecoration(
         color: AppColors.surface,
@@ -108,15 +105,6 @@ class _DetailTopBar extends StatelessWidget {
                   onPressed: () => context.go(AppRoutes.home),
                   icon: const Icon(Icons.arrow_back, size: 18),
                   label: const Text('Back to portfolio'),
-                ),
-                const Spacer(),
-                const SizedBox(width: 16),
-                Flexible(
-                  child: Text(
-                    appName,
-                    style: textTheme.titleMedium,
-                    overflow: TextOverflow.ellipsis,
-                  ),
                 ),
               ],
             ),

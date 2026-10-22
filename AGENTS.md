@@ -107,12 +107,12 @@ Use a single source of truth, e.g. `lib/data/projects_data.dart`, with a typed p
 - Name: CMA Stock
 - Slug: `cma-stock`
 - Type: Published app
-- Play Store URL: `https://bit.ly/CMAStockApp`
+- Play Store URL: `https://play.google.com/store/apps/details?id=com.ahmadramsi.cahaya_mulya_abadi`
 - Known technologies: Flutter, Firebase, Supabase, Lottie, Local Notifications, Flutter Background Service
 - Known summary: Inventory management application for CV Cahaya Mulya Abadi, including stock management, notifications, and background tasks.
 - Main actions:
   - `Visit CMA Stock` -> `/projects/cma-stock`
-  - `Google Play` -> `https://bit.ly/CMAStockApp`
+  - `Google Play` -> `https://play.google.com/store/apps/details?id=com.ahmadramsi.cahaya_mulya_abadi`
   - QR code -> same URL as Google Play
 - Note: Use the provided URL unless the owner supplies the canonical Play Store URL. Do not invent a different link.
 

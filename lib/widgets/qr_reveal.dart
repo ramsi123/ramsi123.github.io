@@ -25,7 +25,7 @@ class QrRevealButton extends StatefulWidget {
 
 class _QrRevealButtonState extends State<QrRevealButton> {
   static const double _popupWidth = 168;
-  static const double _popupHeightReserve = 210;
+  static const double _popupHeightReserve = 250;
   static const double _edgeInset = 8;
   static const double _gap = 12;
 
