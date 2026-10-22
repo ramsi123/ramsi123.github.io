@@ -1,0 +1,35 @@
+{
+    "name": "Ahmad Ramsi — Mobile Developer",
+    "short_name": "Ahmad Ramsi",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#101012",
+    "theme_color": "#101012",
+    "description": "Personal portfolio of Dhiya' Ulhaq Ahmad Ramsi, a mobile developer specializing in Flutter and Kotlin for Android.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}
