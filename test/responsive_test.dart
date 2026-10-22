@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:ahmad_ramsi_portfolio/app.dart';
 import 'package:ahmad_ramsi_portfolio/widgets/qr_code_tile.dart';
+import 'package:ahmad_ramsi_portfolio/widgets/qr_reveal.dart';
 
 const List<Size> _viewports = <Size>[
   Size(390, 844), // phone
@@ -32,20 +33,21 @@ void main() {
       expect(find.text('FocusTime'), findsOneWidget);
       expect(find.text('Agrisight'), findsOneWidget);
 
-      // A clickable Play Store link remains next to every QR code.
+      // A clickable Play Store link remains next to every QR trigger.
       expect(find.text('Google Play'), findsNWidgets(2));
+      expect(find.byType(QrRevealButton), findsNWidgets(2));
 
-      // The QR code never shrinks below a scannable size.
-      final qrTiles = find.byType(QrCodeTile);
-      expect(qrTiles, findsNWidgets(2));
-      for (var index = 0; index < 2; index++) {
-        final qrSize = tester.getSize(qrTiles.at(index));
-        expect(
-          qrSize.width,
-          greaterThanOrEqualTo(112),
-          reason: 'QR card at $label',
-        );
-      }
+      // The revealed QR code never shrinks below a scannable size.
+      final reveal = find.byType(QrRevealButton).first;
+      await tester.ensureVisible(reveal);
+      await tester.pumpAndSettle();
+      await tester.tap(reveal);
+      await tester.pumpAndSettle();
+      expect(
+        tester.getSize(find.byType(QrCodeTile)).width,
+        greaterThanOrEqualTo(112),
+        reason: 'QR popup at $label',
+      );
     });
   }
 }

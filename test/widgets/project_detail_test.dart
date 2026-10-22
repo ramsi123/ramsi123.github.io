@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -9,6 +10,7 @@ import 'package:ahmad_ramsi_portfolio/theme/app_theme.dart';
 import 'package:ahmad_ramsi_portfolio/widgets/app_icon_badge.dart';
 import 'package:ahmad_ramsi_portfolio/widgets/play_store_button.dart';
 import 'package:ahmad_ramsi_portfolio/widgets/qr_code_tile.dart';
+import 'package:ahmad_ramsi_portfolio/widgets/qr_reveal.dart';
 
 const PublishedApp _minimalApp = PublishedApp(
   name: 'CMA Stock',
@@ -54,9 +56,24 @@ void main() {
     await _pumpDetail(tester, _minimalApp);
 
     final play = tester.widget<PlayStoreButton>(find.byType(PlayStoreButton));
-    final qr = tester.widget<QrCodeTile>(find.byType(QrCodeTile));
+    final qr = tester.widget<QrRevealButton>(find.byType(QrRevealButton));
     expect(play.url, _minimalApp.playStoreUrl);
     expect(qr.url, _minimalApp.playStoreUrl);
+
+    // The QR card stays hidden until the trigger is engaged.
+    expect(find.byType(QrCodeTile), findsNothing);
+
+    final reveal = find.byType(QrRevealButton);
+    await tester.ensureVisible(reveal);
+    await tester.pumpAndSettle();
+    final mouse = await tester.createGesture(kind: PointerDeviceKind.mouse);
+    addTearDown(mouse.removePointer);
+    await mouse.addPointer(location: Offset.zero);
+    await tester.pump();
+    await mouse.moveTo(tester.getCenter(reveal));
+    await tester.pumpAndSettle();
+
+    expect(find.byType(QrCodeTile), findsOneWidget);
   });
 
   testWidgets('shows a neutral placeholder when no screenshots exist', (

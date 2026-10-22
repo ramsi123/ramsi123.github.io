@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../data/models.dart';
 import 'play_store_button.dart';
-import 'qr_code_tile.dart';
+import 'qr_reveal.dart';
 
-/// Google Play button plus matching QR code.
+/// Google Play button plus a compact QR trigger.
 ///
 /// Both widgets receive [PublishedApp.playStoreUrl] from a single place, so
 /// the QR code always encodes exactly the URL the button opens.
@@ -21,7 +21,7 @@ class PlayCtaRow extends StatelessWidget {
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
         PlayStoreButton(url: app.playStoreUrl, appName: app.name),
-        QrCodeTile(url: app.playStoreUrl, appName: app.name),
+        QrRevealButton(url: app.playStoreUrl, appName: app.name),
       ],
     );
   }

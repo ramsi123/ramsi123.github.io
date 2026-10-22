@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -7,6 +8,7 @@ import 'package:ahmad_ramsi_portfolio/widgets/app_icon_badge.dart';
 import 'package:ahmad_ramsi_portfolio/widgets/app_showcase_card.dart';
 import 'package:ahmad_ramsi_portfolio/widgets/play_store_button.dart';
 import 'package:ahmad_ramsi_portfolio/widgets/qr_code_tile.dart';
+import 'package:ahmad_ramsi_portfolio/widgets/qr_reveal.dart';
 
 const PublishedApp _fixture = PublishedApp(
   name: 'CMA Stock',
@@ -36,6 +38,19 @@ Future<void> _pumpCard(WidgetTester tester, {required Size size}) async {
   );
 }
 
+Future<void> _hoverQr(WidgetTester tester) async {
+  final reveal = find.byType(QrRevealButton);
+  await tester.ensureVisible(reveal);
+  await tester.pumpAndSettle();
+
+  final mouse = await tester.createGesture(kind: PointerDeviceKind.mouse);
+  addTearDown(mouse.removePointer);
+  await mouse.addPointer(location: Offset.zero);
+  await tester.pump();
+  await mouse.moveTo(tester.getCenter(reveal));
+  await tester.pumpAndSettle();
+}
+
 void main() {
   testWidgets('shows editorial content, visit link, Play button and QR', (
     tester,
@@ -47,19 +62,22 @@ void main() {
     expect(find.byType(AppIconBadge), findsOneWidget);
     expect(find.text('Visit CMA Stock'), findsOneWidget);
     expect(find.text('Google Play'), findsOneWidget);
-    expect(find.byType(QrCodeTile), findsOneWidget);
+    expect(find.byType(QrRevealButton), findsOneWidget);
+    expect(find.byType(QrCodeTile), findsNothing);
 
     final play = tester.widget<PlayStoreButton>(find.byType(PlayStoreButton));
-    final qr = tester.widget<QrCodeTile>(find.byType(QrCodeTile));
+    final qr = tester.widget<QrRevealButton>(find.byType(QrRevealButton));
     expect(play.url, _fixture.playStoreUrl);
     expect(qr.url, _fixture.playStoreUrl);
     expect(qr.url, _fixture.qrPayload);
 
+    await _hoverQr(tester);
+
+    final tile = find.byType(QrCodeTile);
+    expect(tile, findsOneWidget);
+
     final semantics = tester.widget<Semantics>(
-      find.descendant(
-        of: find.byType(QrCodeTile),
-        matching: find.byType(Semantics),
-      ),
+      find.descendant(of: tile, matching: find.byType(Semantics)),
     );
     expect(semantics.properties.label, 'Scan to open CMA Stock on Google Play');
   });
@@ -99,6 +117,18 @@ void main() {
 
     expect(tester.takeException(), isNull);
     expect(find.text('Visit CMA Stock'), findsOneWidget);
+    expect(find.byType(QrRevealButton), findsOneWidget);
+
+    await tester.ensureVisible(find.byType(QrRevealButton));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byType(QrRevealButton));
+    await tester.pumpAndSettle();
+
     expect(find.byType(QrCodeTile), findsOneWidget);
+    expect(tester.takeException(), isNull);
+
+    await tester.tapAt(const Offset(5, 5));
+    await tester.pumpAndSettle();
+    expect(find.byType(QrCodeTile), findsNothing);
   });
 }
